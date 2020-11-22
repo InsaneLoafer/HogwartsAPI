@@ -7,7 +7,6 @@ import pystache
 import requests
 from hamcrest import *
 
-
 class TestDemo:
     def test_get(self):
         r = requests.get('https://httpbin.testing-studio.com/get')
