@@ -1,2 +1,3 @@
 ## 接口测试阶段作业路径
-### 第一次直播课作业
+### mock实战二作业
+assignment/mock_practice
