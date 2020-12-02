@@ -25,4 +25,4 @@ def response(flow: http.HTTPFlow):
             flow.response.text = json.dumps(data)
 
 if __name__ == '__main__':
-    os.system(r"mitmdump -p 8999 -s 'D:\My_Files\HogwartsAPI\assignment\mock_practice\mitm_rewrite.py'")
+    os.system(r"mitmdump -p 8999 -s 'mitm_rewrite.py'")
