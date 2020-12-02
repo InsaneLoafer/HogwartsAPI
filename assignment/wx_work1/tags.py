@@ -58,7 +58,7 @@ class Tag:
                 "group_id": []
             }
         )
-        return r.json()
+        return r
 
     # 删除标签组
     def delete_by_groupid(self, groupid):
@@ -70,7 +70,7 @@ class Tag:
                 "group_id": groupid
             }
         )
-        return r.json()
+        return r
 
 if __name__ == '__main__':
     tag = Tag()
