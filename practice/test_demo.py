@@ -73,7 +73,7 @@ class TestDemo:
         print(r.text)
         fact = r.json()['catagory_list']['catagories'][0]['name']
         print(fact)
-        assert  fact == '霍格沃兹测试学院公众号'
+        assert fact == '霍格沃兹测试学院公众号'
 
     def test_hamcrest(self):
         url = 'https://home.testing-studio.com/catagories.json'
