@@ -29,7 +29,7 @@ class TestTag:
         r = self.tag.get_taglist()
         assert r.status_code == 200
         assert r.json()['errcode'] == 0
-
+        # 验证列表中是否有所添加的标签
         group = [group for group in r.json()['tag_group'] if group['group_name'] == group_name][0]
         tags = [{'name': tag['name']} for tag in group['tag']]
         print(group)
@@ -44,21 +44,21 @@ class TestTag:
         assert r.json()['errcode'] != 0
 
     # 测试删除标签
-    def test_tag_delete(self):
-        # 首先获取标签id列表
-        tags_list = [tag['tag'] for tag in self.tag.get_taglist().json()['tag_group']]
-        tag_id_list = [tag_id['id'] for tag_id in tags_list]
-        # 遍历删除所有标签
-        for tag_id in tag_id_list:
-            self.tag.delete_by_tagid(tag_id)
-        assert len(tags_list) == 0
+    @pytest.mark.parametrize("tag_name", [
+        "tag1", "tag2", "tag3"
+    ])
+    def test_tag_delete(self, tag_name):
+        r = self.tag.delete_by_tagname(tag_name)
+        assert r.status_code == 200
+        assert r.json()['errcode'] == 0
+
 
     # 测试删除标签组
-    def test_group_delete(self):
-        # 首先获取标签组id列表
-        group_id_list = [group['group_id'] for group in self.tag.get_taglist().json()['tag_group']]
-        # 遍历删除所有标签
-        for group_id in group_id_list:
-            self.tag.delete_by_tagid(group_id)
-        assert len(group_id_list) == 0
+    @pytest.mark.parametrize("group_name", [
+        "group1", "group2"
+    ])
+    def test_group_delete(self, group_name):
+        r = self.tag.delete_by_tagname(group_name)
+        assert r.status_code == 200
+        assert r.json()['errcode'] == 0
 
