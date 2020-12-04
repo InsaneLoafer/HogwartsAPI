@@ -43,6 +43,16 @@ class TestTag:
         assert r.status_code == 200
         assert r.json()['errcode'] != 0
 
+    # 测试编辑标签
+    @pytest.mark.parametrize("old_name, new_name, order", [
+        ['group1', 'Insane1', 1],
+        ['tag1', 'TagInsane1', 2]
+    ])
+    def test_edit_tag(self, old_name, new_name, order):
+        r= self.tag.edit(old_name, new_name, order)
+        assert r.status_code == 200
+        assert r.json()['errcode'] == 0
+
     # 测试删除标签
     @pytest.mark.parametrize("tag_name", [
         "tag1", "tag2", "tag3"
