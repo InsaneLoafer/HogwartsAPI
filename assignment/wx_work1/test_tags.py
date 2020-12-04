@@ -44,12 +44,12 @@ class TestTag:
         assert r.json()['errcode'] != 0
 
     # 测试编辑标签
-    @pytest.mark.parametrize("old_name, new_name, order", [
-        ['group1', 'Insane1', 1],
-        ['tag1', 'TagInsane1', 2]
+    @pytest.mark.parametrize("old_name, new_name", [
+        ['group1', 'Insane1'],
+        ['tag1', 'TagInsane1']
     ])
-    def test_edit_tag(self, old_name, new_name, order):
-        r= self.tag.edit(old_name, new_name, order)
+    def test_edit_tag(self, old_name, new_name):
+        r = self.tag.edit(old_name, new_name)
         assert r.status_code == 200
         assert r.json()['errcode'] == 0
 
@@ -68,7 +68,7 @@ class TestTag:
         "group1", "group2"
     ])
     def test_group_delete(self, group_name):
-        r = self.tag.delete_by_tagname(group_name)
+        r = self.tag.delete_by_groupname(group_name)
         assert r.status_code == 200
         assert r.json()['errcode'] == 0
 
