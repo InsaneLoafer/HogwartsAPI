@@ -16,7 +16,7 @@ api = Api(app)
 # app.config['db'] = []
 
 # sqllite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:jinhua911@localhost:3306/hogwarts_db'
 db = SQLAlchemy(app)
 
